@@ -1,0 +1,76 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "description": "sean",
+      "version": "1.0.0",
+      "title": "Classification Tobaco",
+      "contact": {
+        "email": "faris@gmail.com"
+      },
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "paths": {
+        "/classification": {
+            "post": {
+                "tags": [
+                    "Classification"
+                ],
+                "summary": "Return classification result",
+                "requestBody": {
+                    "description": "Request",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/classificationRequest"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                  "responses": {
+                    "200": {
+                      "description": "OK",
+                      "schema": {
+                        "$ref": "#/components/schemas/classificationResponse"
+                      }
+                    },
+                    "400": {
+                      "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "classificationRequest": {
+                "type": "object",
+                "properties": {
+                    "file": {
+                        "type": "string",
+                        "format": "binary"
+                    }
+                }
+            },
+            "classificationResponse": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "label": {
+                      "type": "string",
+                      "format": "string"
+                    }
+                }
+            }             
+        }
+    }
+}

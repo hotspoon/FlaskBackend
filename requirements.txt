@@ -2,3 +2,6 @@ pandas
 numpy
 opencv-python
 scikit-image
+sklearn
+flask-swagger
+flask-swagger-ui
